@@ -1,7 +1,7 @@
 {
   "name": "@liep/gis-ts",
   "description": "GIST (reusable base functions) library for TypeScript",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Luís Silva <luisfelipeluis49@gmail.com>",
   "license": "LGPL-3.0-only",
   "exports": "./src/index.ts",
