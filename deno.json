@@ -1,0 +1,31 @@
+{
+  "name": "@liep/gis-ts",
+  "description": "GIST (reusable base functions) library for TypeScript",
+  "version": "0.1.0",
+  "author": "Luís Silva <luisfelipeluis49@gmail.com>",
+  "license": "LGPL-3.0-only",
+  "exports": "./main.ts",
+  "publish": {
+    "include": [
+      "LICENSE",
+      "README.md",
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "src/tests",
+      "deno.lock"
+    ]
+  },
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "dom.asynciterable",
+      "deno.ns",
+      "deno.unstable"
+    ]
+  },
+  "tasks": {
+    "dev": "deno run --watch main.ts"
+  }
+}
