@@ -4,16 +4,19 @@
   "version": "0.1.0",
   "author": "Luís Silva <luisfelipeluis49@gmail.com>",
   "license": "LGPL-3.0-only",
-  "exports": "./main.ts",
+  "exports": "./src/index.ts",
   "publish": {
     "include": [
-      "LICENSE",
+      "src",
+      "deno.json",
       "README.md",
-      "src/**/*.ts"
+      "LICENSE"
     ],
     "exclude": [
       "src/tests",
-      "deno.lock"
+      "deno.lock",
+      ".gitignore",
+      "CREDITS.md"
     ]
   },
   "compilerOptions": {
