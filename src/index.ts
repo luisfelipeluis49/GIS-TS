@@ -28,6 +28,12 @@ import {
 
 // -- TYPES
 
+/**
+ * Represents a translation.
+ *
+ * @remarks
+ * This interface defines the structure of a translation object.
+ */
 interface Translation {
   specifier: string;
   data: string;
@@ -35,10 +41,20 @@ interface Translation {
 
 // ~~
 
+/**
+ * The global variable for the google gtag.
+ * @type { Gtag }
+ */
 declare let gtag: Gtag;
 
 // ~~
 
+/**
+ * Represents a date and time.
+ *
+ * @remarks
+ * This interface defines the structure of a date and time object, and time is optional.
+ */
 interface DateTime {
   year: number;
   month: number;
@@ -49,7 +65,11 @@ interface DateTime {
   millisecond?: number;
   microsecond?: number;
 }
-
+/**
+ * This interface defines the structure of a date and time object.
+ *
+ * @public
+ */
 interface DateAndTime {
   year: number;
   month: number;
@@ -63,6 +83,16 @@ interface DateAndTime {
 
 // ~~
 
+/**
+ * Represents a time value.
+ *
+ * @interface Time
+ * @property {number} hour - The hour component of the time.
+ * @property {number} minute - The minute component of the time.
+ * @property {number} second - The second component of the time.
+ * @property {number} millisecond - The millisecond component of the time.
+ * @property {number} microsecond - The microsecond component of the time.
+ */
 interface Time {
     hour: number;
     minute: number;
@@ -73,6 +103,9 @@ interface Time {
 
 // ~~
 
+/**
+ * Represents a map with a maximum element count.
+ */
 export class CappedMap {
   // -- PROPERTIES
 
@@ -81,6 +114,10 @@ export class CappedMap {
 
   // -- CONSTRUCTORS
 
+/**
+ * Constructs a new instance of the class.
+ * @param maximumElementCount - The maximum number of elements allowed.
+ */
   constructor(
     maximumElementCount: number,
   ) {
@@ -90,6 +127,12 @@ export class CappedMap {
 
   // -- INQUIRIES
 
+/**
+ * Checks if the map contains a specific key.
+ * 
+ * @param key - The key to check for.
+ * @returns A boolean indicating whether the key exists in the map.
+ */
   has(
     key: string,
   ): boolean {
@@ -98,12 +141,23 @@ export class CappedMap {
 
   // -- OPERATIONS
 
+/**
+ * Clears the elementByKeyMap.
+ */
   clear() {
     this.elementByKeyMap.clear();
   }
 
   // ~~
 
+/**
+ * Sets the element with the specified key.
+ * If the key already exists, the existing element will be replaced.
+ * If the maximum element count is reached, the oldest element will be removed.
+ *
+ * @param key - The key of the element.
+ * @param element - The element to be set.
+ */
   set(
     key: string,
     element: unknown,
@@ -121,6 +175,14 @@ export class CappedMap {
 
   // ~~
 
+/**
+ * Retrieves the value associated with the specified key from the map.
+ * If the key is not found, returns the provided defaultValue.
+ *
+ * @param key - The key to retrieve the value for.
+ * @param defaultValue - The value to return if the key is not found. Default is undefined.
+ * @returns The value associated with the key, or the defaultValue if the key is not found.
+ */
   get(
     key: string,
     defaultValue: unknown = undefined,
@@ -140,23 +202,83 @@ export class CappedMap {
 
 // -- VARIABLES
 
-export let languageTag: string = "en",
-  continentCode: string = "",
-  countryCode: string = "",
-  languageCode: string = "en",
-  defaultLanguageCode: string = "en",
-  substitutionPrefix: string = "{",
-  substitutionSuffix: string = "}",
-  textBySlugMap: Map<string, string> = new Map(),
-  processedLineTagArray: Array<
-    { name: string; openingDefinition: string; closingDefinition: string }
-  > = [],
-  processedDualTagArray: Array<
-    { name: string; openingDefinition: string; closingDefinition: string }
-  > = [],
-  processedTagArray: Array<{ name: string; definition: string }> = [],
-  googleAnalyticsTrackingScript: HTMLScriptElement | null = null,
-  googleAnalyticsTrackingIsEnabled = false;
+/**
+ * The language tag used for localization.
+ * @type {string}
+ */
+export let languageTag: string = "en";
+
+/**
+ * The continent code for the current localization.
+ * @type {string}
+ */
+export let continentCode: string = "";
+
+/**
+ * The country code for the current localization.
+ * @type {string}
+ */
+export let countryCode: string = "";
+
+/**
+ * The language code for the current localization.
+ * @type {string}
+ */
+export let languageCode: string = "en";
+
+/**
+ * The default language code used when no other language is specified.
+ * @type {string}
+ */
+export let defaultLanguageCode: string = "en";
+
+/**
+ * The prefix used for substitution in localized strings.
+ * @type {string}
+ */
+export let substitutionPrefix: string = "{";
+
+/**
+ * The suffix used for substitution in localized strings.
+ * @type {string}
+ */
+export let substitutionSuffix: string = "}";
+
+/**
+ * A map of text strings by their slug identifiers.
+ * @type {Map<string, string>}
+ */
+export let textBySlugMap: Map<string, string> = new Map();
+
+/**
+ * An array of processed line tags, each with a name, opening definition, and closing definition.
+ * @type {Array<{ name: string; openingDefinition: string; closingDefinition: string }>}
+ */
+export let processedLineTagArray: Array<{ name: string; openingDefinition: string; closingDefinition: string }> = [];
+
+/**
+ * An array of processed dual tags, each with a name, opening definition, and closing definition.
+ * @type {Array<{ name: string; openingDefinition: string; closingDefinition: string }>}
+ */
+export let processedDualTagArray: Array<{ name: string; openingDefinition: string; closingDefinition: string }> = [];
+
+/**
+ * An array of processed tags, each with a name and definition.
+ * @type {Array<{ name: string; definition: string }>}
+ */
+export let processedTagArray: Array<{ name: string; definition: string }> = [];
+
+/**
+ * The Google Analytics tracking script element.
+ * @type {HTMLScriptElement | null}
+ */
+export let googleAnalyticsTrackingScript: HTMLScriptElement | null = null;
+
+/**
+ * A flag indicating whether Google Analytics tracking is enabled.
+ * @type {boolean}
+ */
+export let googleAnalyticsTrackingIsEnabled = false;
 
 // -- FUNCTIONS
 
